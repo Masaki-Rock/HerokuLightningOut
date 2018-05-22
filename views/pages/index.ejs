@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head></head>
+    <script src="js/vendor/force.all.js"></script>
+    <script>
+        var oauth = force.OAuth.createInstance();
+        oauth.login().then(function(oauthResult) {
+            force.DataService.createInstance(oauthResult);    
+        });
+
+        function loadContacts() {
+            var service = force.DataService.getInstance();
+            service.query('select id, Name from contact LIMIT 50')
+                .then(function(response) {
+                    var contacts = response.records;
+                    // do something with contacts
+                    console.log(contact);
+                });
+        }
+    </script>
     <body>
         <p>Heroku!!Masaki.Kawaguchi</p>
     </body>
