@@ -11,7 +11,7 @@
         oauth.login().then(function(oauthResult) {
             force.DataService.createInstance(oauthResult);
             force.DataService.getInstance("").useProxy=false
-            var lightningEndPointURI = force.DataService.getInstance("").instanceURL..replace("my.salesforce", "lightning.force");
+            var lightningEndPointURI = force.DataService.getInstance("").instanceURL.replace("my.salesforce", "lightning.force");
             var accessToken = force.DataService.getInstance("").accessToken;
             var appName = "LightningOutApp";
             var cmpName = "AccountCmp";
