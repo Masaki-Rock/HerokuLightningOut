@@ -3,7 +3,10 @@
     <head></head>
     <script src="js/vendor/force.all.js"></script>
     <script>
-        var oauth = force.OAuth.createInstance();
+        var appId = "3MVG9d8..z.hDcPI480sWvD14hZrBiTAt1Y9JkOYQMwZX7FwwART8UP6HpgumdLJ0rLi6c1gVCI9mK7W4NePM";
+        var loginURL = "https://login.salesforce.com";
+        var oauthCallbackURL = "https://floating-lake-81009.herokuapp.com/oauthcallback";
+        var oauth = force.OAuth.createInstance(appId,loginURL,oauthCallbackURL);
         oauth.login().then(function(oauthResult) {
             force.DataService.createInstance(oauthResult);
             console.log("ログイン中！",oauthResult);   
@@ -21,6 +24,6 @@
     </script>
     <body>
         <p>Heroku!!Masaki.Kawaguchi</p>
-        <input type="button" value="Yahoo!Japanへリンク" onClick="loadContacts();"></input>
+        <input type="button" value="取引先責任者取得" onClick="loadContacts();"></input>
     </body>
 </html>
