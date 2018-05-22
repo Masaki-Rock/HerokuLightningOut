@@ -15,6 +15,7 @@
             var accessToken = force.DataService.getInstance("").accessToken;
             var appName = "LightningOutApp";
             var cmpName = "AccountCmp";
+            console.log("Create Lightning...", lightningEndPointURI, accessToken);
             $Lightning.use(appName, function() {
                 $Lightning.createComponent(cmpName, {}, "lightning");
             }, lightningEndPointURI, accessToken);
