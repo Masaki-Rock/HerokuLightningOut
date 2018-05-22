@@ -5,7 +5,8 @@
     <script>
         var oauth = force.OAuth.createInstance();
         oauth.login().then(function(oauthResult) {
-            force.DataService.createInstance(oauthResult);    
+            force.DataService.createInstance(oauthResult);
+            console.log("ログイン中！",oauthResult);   
         });
 
         function loadContacts() {
@@ -14,11 +15,12 @@
                 .then(function(response) {
                     var contacts = response.records;
                     // do something with contacts
-                    console.log(contact);
+                    console.log("検索できました！",contact);
                 });
         }
     </script>
     <body>
         <p>Heroku!!Masaki.Kawaguchi</p>
+        <input type="button" value="Yahoo!Japanへリンク" onClick="loadContacts();"></input>
     </body>
 </html>
