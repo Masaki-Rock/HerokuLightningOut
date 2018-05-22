@@ -13,11 +13,11 @@
             force.DataService.getInstance("").useProxy=false
             var lightningEndPointURI = force.DataService.getInstance("").instanceURL.replace("my.salesforce", "lightning.force");
             var accessToken = force.DataService.getInstance("").accessToken;
-            var appName = "LightningOutApp";
-            var cmpName = "AccountCmp";
+            var appName = "c:LightningOutApp";
+            var cmpName = "c:AccountCmp";
             console.log("Create Lightning...", lightningEndPointURI, accessToken);
             $Lightning.use(appName, function() {
-                $Lightning.createComponent(cmpName, {}, "lightning");
+                $Lightning.createComponent(cmpName, {}, "lightningLocator");
             }, lightningEndPointURI, accessToken);
         });
         function loadContacts() {
