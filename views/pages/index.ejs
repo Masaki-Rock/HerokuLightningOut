@@ -17,7 +17,7 @@
             var cmpName = "c:AccountCmp";
             console.log("Create Lightning...", lightningEndPointURI, accessToken);
             $Lightning.use(appName, function() {
-                $Lightning.createComponent(cmpName, {}, "lightningLocator");
+                $Lightning.createComponent(cmpName, {}, "lightning");
             }, lightningEndPointURI, accessToken);
         });
         function loadContacts() {
