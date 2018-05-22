@@ -1,12 +1,8 @@
 <!DOCTYPE HTML>
 <html>
-<script>
-    
-    if (window.opener.force && window.opener.force.oauthCallback) {
-       window.opener.force.oauthCallback(window.location.href);
-   } else if (window.opener.oauthCallback) {
-       window.opener.oauthCallback(window.location.href);
-   }
-   //window.close();
-</script>
+    <script>
+        var event = new CustomEvent("oauthCallback", {"detail": window.location.href});
+        window.opener.document.dispatchEvent(event);
+        window.close();
+    </script>
 </html>
