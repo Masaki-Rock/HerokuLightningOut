@@ -3,18 +3,15 @@
     <head></head>
     <script src="js/vendor/force.all.js"></script>
     <script>
-        var oauth = null;
-        window.onload = function(){
-            var appId = "3MVG9d8..z.hDcPI480sWvD14hZrBiTAt1Y9JkOYQMwZX7FwwART8UP6HpgumdLJ0rLi6c1gVCI9mK7W4NePM";
-            var loginURL = "https://login.salesforce.com";
-            var oauthCallbackURL = "https://floating-lake-81009.herokuapp.com/oauthcallback";
-            oauth = force.OAuth.createInstance(appId,loginURL,oauthCallbackURL);
-            oauth.login().then(function(oauthResult) {
-                force.DataService.createInstance(oauthResult);
-                console.log("ログイン中！",oauthResult);   
-            });
-        }
-
+        var appId = "3MVG9d8..z.hDcPI480sWvD14hZrBiTAt1Y9JkOYQMwZX7FwwART8UP6HpgumdLJ0rLi6c1gVCI9mK7W4NePM";
+        var loginURL = "https://login.salesforce.com";
+        var oauthCallbackURL = "https://floating-lake-81009.herokuapp.com/oauthcallback";
+        var oauth = force.OAuth.createInstance(appId,loginURL,oauthCallbackURL);
+        oauth.login().then(function(oauthResult) {
+            force.DataService.createInstance(oauthResult);
+            force.DataService.getInstance("").useProxy=false
+            console.log("ログイン中！",force.DataService.getInstance("").accessToken);   
+        });
         function loadContacts() {
             var service = force.DataService.getInstance();
             service.query('select id, Name from contact LIMIT 50')
